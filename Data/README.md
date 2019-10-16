@@ -3,10 +3,6 @@
 Data is sourced from [here][shakespeare].
 The [robots.txt](http://shakespeare.mit.edu/robots.txt) file seems malformed, so I am guessing it intends to prevent all access
 
-```{shell}
-
-```
-
 ## Steps
 
 1. Navigate to the [main page][shakespeare].
@@ -18,6 +14,5 @@ The [robots.txt](http://shakespeare.mit.edu/robots.txt) file seems malformed, so
 ```{shell}
 python parse_plays.py
 ```
-
 
 [shakespeare]: http://shakespeare.mit.edu/
