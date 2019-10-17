@@ -36,10 +36,10 @@ def process_all_files(folder_in, model_out, order):
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('-in', '--folder-in', help = 'Folder to import files from', required = True)
-    parser.add_argument('-out', '--model-out', help = 'Folder to save results', required = True)
+    parser.add_argument('-out', '--model-out', help = 'File to use to save the model', required = True)
     parser.add_argument('-o', '--order', help = 'The order of the Markov Chain', required = True)
     args = parser.parse_args()
     print('folder in: ' + args.folder_in)
     print('model out: ' + args.model_out)
     print('order: ' + args.order)
-    process_all_files(args.folder_in, args.model_out, args.order)
+    process_all_files(args.folder_in, args.model_out, int(args.order))

@@ -44,4 +44,14 @@ The [robots.txt](http://shakespeare.mit.edu/robots.txt) file seems malformed, so
 python preprocess_plays.py -in ../data/raw -out ../data/parsed
 ```
 
+# Text Generation with Markov Models (MC)
+
+1. Train the MC model on the sample text
+2. Test the MC model by generating sample lines
+
+```{shell}
+python markov_chain_train.py -in ../data/parsed -out ../data/model.json -o 2
+python markov_chain_test.py -in ../data/model.json -out ../data/sample.txt -cnt 2
+```
+
 [shakespeare]: http://shakespeare.mit.edu/

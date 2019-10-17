@@ -9,5 +9,4 @@ __pycache__
 *.bak
 
 # Data
-/data/raw/*.*
-/data/parsed/*.*
+/data/**/*.*
