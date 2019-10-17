@@ -1,6 +1,7 @@
 import pathlib
 import progressbar as pb
 import string
+from argparse import ArgumentParser
 from bs4 import BeautifulSoup
 from shutil import rmtree
 
@@ -50,11 +51,10 @@ def prepare_folder_out(folder_out):
     else:
         folder_out.mkdir()
 
-def process_all_files(data_root):
+def process_all_files(folder_in, folder_out):
 
-    data_root = pathlib.Path(data_root)
-    folder_in = data_root.joinpath('./raw')
-    folder_out = data_root.joinpath('./parsed')
+    folder_in = pathlib.Path(folder_in)
+    folder_out = pathlib.Path(folder_out)
     prepare_folder_out(folder_out)
 
     i = 0
@@ -78,5 +78,10 @@ def process_all_files(data_root):
                 file_out.writelines(['{}\n'.format(line) for line in lines])
 
 if __name__ == '__main__':
-    data_root = pathlib.Path(__file__).parent
-    process_all_files(data_root)
+    parser = ArgumentParser()
+    parser.add_argument('-in', '--folder-in', help = 'Folder to import files from', required = True)
+    parser.add_argument('-out', '--folder-out', help = 'Folder to save results', required = True)
+    args = parser.parse_args()
+    print('folder in: ' + args.folder_in)
+    print('folder out: ' + args.folder_out)
+    process_all_files(args.folder_in, args.folder_out)

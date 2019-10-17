@@ -37,11 +37,11 @@ The [robots.txt](http://shakespeare.mit.edu/robots.txt) file seems malformed, so
 1. Navigate to the [main page][shakespeare].
 2. Navigate to the play
 3. Use the "Entire play" view
-4. Save the play in `./data/raw` using the right mouse button.
+4. Save the play in `./data/raw` using the right mouse button (or ctrl + s).
    Please save the HTML as "Webpage Only"
 5. Run the Parsing script
 ```{shell}
-python parse_plays.py
+python preprocess_plays.py -in ../data/raw -out ../data/parsed
 ```
 
 [shakespeare]: http://shakespeare.mit.edu/
