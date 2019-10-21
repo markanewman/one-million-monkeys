@@ -18,14 +18,21 @@ def compile_model(model):
 
 def generate_line(model, order):
 
-    start = '_'.join([''] * order)
-    end = '_'
-    line = []
-    
+    line = [''] * order
+    idx = 0
 
+    while(True):
+        curr = '_'.join(line[idx:idx+order])
+        if curr not in model:
+            break
+        possible = model[curr]        
+        value = np.random.choice(possible.values, p = possible.probalities)
+        if value == '':
+            break
+        line.append(value)
+        idx = idx + 1
 
-
-    return 'xxx'
+    return ' '.join(line[2:])
 		
 def generate_text(model_in, file_out, count):
     model_in = pathlib.Path(model_in)
@@ -46,13 +53,12 @@ def generate_text(model_in, file_out, count):
             file_out.writelines([line, '\n'])
 
 if __name__ == '__main__':
-#    parser = ArgumentParser()
-#    parser.add_argument('-in', '--model-in', help = 'File containing thwe Markov Chain model', required = True)
-#    parser.add_argument('-out', '--file-out', help = 'File to use to save the generated text', required = True)
-#    parser.add_argument('-cnt', '--count', help = 'How many lines to generate', required = True)
-#    args = parser.parse_args()
-#    print('model in: ' + args.model_in)
-#    print('file out: ' + args.file_out)
-#    print('count: ' + args.count)
-#    generate_text(args.model_in, args.file_out, args.count)
-    generate_text('c:/repos/TextGeneration/data/model.json',  'c:/repos/TextGeneration/data/sample.txt', 4)
+    parser = ArgumentParser()
+    parser.add_argument('-in', '--model-in', help = 'File containing thwe Markov Chain model', required = True)
+    parser.add_argument('-out', '--file-out', help = 'File to use to save the generated text', required = True)
+    parser.add_argument('-cnt', '--count', help = 'How many lines to generate', required = True)
+    args = parser.parse_args()
+    print('model in: ' + args.model_in)
+    print('file out: ' + args.file_out)
+    print('count: ' + args.count)
+    generate_text(args.model_in, args.file_out, args.count)
