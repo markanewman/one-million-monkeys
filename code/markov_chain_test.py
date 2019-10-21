@@ -32,7 +32,7 @@ def generate_line(model, order):
         line.append(value)
         idx = idx + 1
 
-    return ' '.join(line[2:])
+    return ' '.join(line[order:])
 		
 def generate_text(model_in, file_out, count):
     model_in = pathlib.Path(model_in)
