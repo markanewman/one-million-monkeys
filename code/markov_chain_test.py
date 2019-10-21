@@ -15,6 +15,17 @@ def compile_model(model):
         probalities = probalities / np.sum(probalities)
         model[key] = _next(values, probalities)
     return model
+
+def generate_line(model, order):
+
+    start = '_'.join([''] * order)
+    end = '_'
+    line = []
+    
+
+
+
+    return 'xxx'
 		
 def generate_text(model_in, file_out, count):
     model_in = pathlib.Path(model_in)
@@ -28,8 +39,11 @@ def generate_text(model_in, file_out, count):
     order = model[0]
     model =  compile_model(model[1])
 
-    qq = 1
-
+    print('Generating text...')
+    with open(file_out, 'w', encoding = 'utf-8') as file_out:
+        for i in range(count):
+            line = generate_line(model, order)
+            file_out.writelines([line, '\n'])
 
 if __name__ == '__main__':
 #    parser = ArgumentParser()
