@@ -48,7 +48,7 @@ def generate_text(model_in, file_out, count):
 
     print('Generating text...')
     with open(file_out, 'w', encoding = 'utf-8') as file_out:
-        for i in range(count):
+        for _ in range(count):
             line = generate_line(model, order)
             file_out.writelines([line, '\n'])
 
