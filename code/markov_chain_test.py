@@ -61,4 +61,4 @@ if __name__ == '__main__':
     print('model in: ' + args.model_in)
     print('file out: ' + args.file_out)
     print('count: ' + args.count)
-    generate_text(args.model_in, args.file_out, args.count)
+    generate_text(args.model_in, args.file_out, int(args.count))
